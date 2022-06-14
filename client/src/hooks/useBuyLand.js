@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react'
-import BuyLandData from "../Buyland.json"
-import getWeb3 from "./getWeb3"
+import {useState, useEffect} from 'react';
+import BuyLandData from "../Buyland.json";
+import getWeb3 from "./getWeb3";
 
 const contractAddress = "0xeDAC36bd0c63c8ED1e93Ea96D5D2da58F35b0ABd"
 export const useBuyLandContract = () => {
@@ -54,10 +54,5 @@ export const useBuyLandContract = () => {
   
     }, [accounts])
   
-
     return  [contract, accounts]
-  
-
-
-
 }
