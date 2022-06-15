@@ -1,10 +1,10 @@
 import './App.css';
-import { World } from './components/World';
+import { World } from './components/World/World';
 
 function App() {
   return (
     <div className="App">
-      <h1>Testing1</h1>
+      <h1>Welcome to IzenDome's DeCentraland</h1>
       <World/>
     </div>
   );

@@ -2,6 +2,50 @@
   text-align: center;
 }
 
+body {
+  background-color: #191919;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.flexCol {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.park {
+  background-color: #008a17;
+  outline: 1px solid #191919;
+}
+
+.road {
+  background-color: #7a7a7a;
+  outline: 1px solid #191919;
+}
+
+.house {
+  background-color: #4F77FF;
+  outline: 1px solid #191919;
+}
+
+.available {
+  background-color: #9AD5FF;
+  outline: 1px solid #191919;
+}
+
+h1 {
+  color: #E96A23;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
