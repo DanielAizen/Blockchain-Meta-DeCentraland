@@ -1,4 +1,5 @@
-import React, {useEffect, useReducer} from "react";
+import React, {useEffect, useReducer, useState} from "react";
+import { PropertyPopUp } from "../PropertyPopUp/PropertyPopUp";
 import "./Property.css"
 
 const ACTIONS = {Bought: 'setBought', Road: "setRoad", Park: 'setPark', Available: 'setAvailable', NewPrice: 'setNewPrice'}
@@ -30,6 +31,7 @@ export const Property = (props) => {
         isOwned: false,
         isBuyable: false,
     };
+    const [popup, setPopup] = useState(false);
     const [property, dispatch] = useReducer(propertyReducer, INITIAL_STATE);
     const hexId = `0x00000000000000000000000000000000000000${props.id.toString(16)}`;
     const owners = props.owners
@@ -61,11 +63,32 @@ export const Property = (props) => {
         setProperty()
     }, [owners])
 
+    const handlePopup = () => {
+        if (property.isBuyable) {
+            console.log(property);
+            setPopup(true);
+        } else {
+            console.log(`${props.id}- is of type ${property.pType}`);
+        }
+    }
+
+    const handleClosePopup = () => {
+        setPopup(false);
+    }
+
     return (
         <div >
-            <button className={` size ${property.pType}`}
-                    onClick={property.isBuyable ? ()=>{console.log(property)} : ()=>{console.log(`${props.id}- is of type ${property.pType}`)}}>
-            </button>      
+            <button className={` size ${property.pType}`} onClick={handlePopup}></button>
+            {popup ? 
+                <PropertyPopUp 
+                property={property} 
+                contract={props.contract} 
+                accounts={props.accounts} 
+                hexId={hexId} 
+                dispatch={dispatch}
+                closePopup={handleClosePopup}
+                />
+            : ""}     
         </div>
     )
 }
