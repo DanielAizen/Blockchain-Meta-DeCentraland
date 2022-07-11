@@ -1,8 +1,8 @@
 import React, {useEffect, useReducer, useState} from "react";
-import { PropertyPopUp } from "../PropertyPopUp/PropertyPopUp";
+import PropertyPopUp from "../PropertyPopUp/PropertyPopUp";
 import "./Property.css"
 
-const ACTIONS = {Bought: 'setBought', Road: "setRoad", Park: 'setPark', Available: 'setAvailable', NewPrice: 'setNewPrice'}
+export const ACTIONS = {Bought: 'setBought', Road: "setRoad", Park: 'setPark', Available: 'setAvailable', NewPrice: 'setNewPrice'}
 
 const roads = [17, 20, 21, 22, 37, 42, 56, 57]
 const parks = [58, 59, 78, 79]
@@ -24,7 +24,7 @@ const propertyReducer = (property, action) => {
     }
 }
 
-export const Property = (props) => {
+const Property = (props) => {
     const INITIAL_STATE = {
         id: props.id,
         price: props.price,
@@ -81,10 +81,12 @@ export const Property = (props) => {
             <button className={` size ${property.pType}`} onClick={handlePopup}></button>
             {popup ? 
                 <PropertyPopUp 
-                property={property} 
+                id={props.id}
+                hexId={hexId}
                 contract={props.contract} 
-                accounts={props.accounts} 
-                hexId={hexId} 
+                account={props.accounts} 
+                price={property.price} 
+                isOwned1={property.isOwned}
                 dispatch={dispatch}
                 closePopup={handleClosePopup}
                 />
@@ -92,3 +94,5 @@ export const Property = (props) => {
         </div>
     )
 }
+
+export default Property
