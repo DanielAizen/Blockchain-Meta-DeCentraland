@@ -2,8 +2,6 @@ import React, { useState, useEffect, useReducer } from "react";
 import { ACTIONS } from '../Property/Property';
 import TicTacToe from "../../games/TicTacToe";
 import MemoryGame from "../../games/memory/MemoryGame";
-import { Card, Button, Form, Row, Col } from "react-bootstrap"
-
 import "./PropertyPopUp.css";
 
 const display = { width: '42rem', height: '42rem' }
@@ -27,14 +25,15 @@ const popupReducer = (popup, action) => {
 }
 
 
-const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1 }) => {
+const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1, closePopup }) => {
     const INITIAL_STATE = {
         id: id,
         isOwned: isOwned1,
         isOwnedByMe: false,
         game: id % 2 === 0 ? true : false,
         transfer: false,
-        setNewPriceClicked: false
+        setNewPriceClicked: false,
+        closePopup: closePopup
     }
     const [popup, dispatchPopup] = useReducer(popupReducer, INITIAL_STATE);
     const [accountId, setAccountId] = useState("");
@@ -100,10 +99,58 @@ const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1
         checkIfOwnedByMe()
     })
 
-
+    //TODO change from bootstrap to html
     return (
         <>
-             <Card style={popup.isEven && popup.isOwned ? display : display2}>
+        <div className="card-popup-container">
+            <div className="card-popup-wrapper">
+                <button className="closeBtn" onClick={() =>popup.closePopup()}>close</button>
+                <div className="popup-header"> Property: {id}  </div>
+                <div className="popup-price"> Property price: { price > 25 ? price / 1000000000000000000 : price}</div>
+                {popup.isOwned &&  popup.game && <MemoryGame /> }
+                {popup.isOwned && !popup.game && <TicTacToe /> }
+                {!popup.isOwned && <button onClick={async () => handlePurchaseClick(id) }> Purchase Property! </button> }
+                <div className="card-popup-inner">
+                    {popup.isOwnedByMe &&
+                    <>
+                        <div className="btnRow">
+                            <button onClick={ async () => dispatchPopup({ type: POPUP_ACTIONS.transferClicked,}) }> Transfer </button>
+                            <button onClick={ async () => dispatchPopup({ type: POPUP_ACTIONS.setNewPriceClicked,}) }> Set New Price </button>
+                        </div>
+                    </> 
+                    }
+                    {popup.transfer &&
+                        <div className="card-popup-form">
+                            <label>Enter accound id:
+                                <input 
+                                type='hex' 
+                                defaultValue={accountId} 
+                                placeholder='0x0000000000000000000000000000000000000000'
+                                onChange={(e) => setAccountId(e.target.value)}
+                                />
+                                <button onClick={async (e) => handleTransfer()}> Submit </button>
+                            </label>
+                        </div>
+                    }
+                    {popup.setNewPriceClicked && 
+                        <div className="card-popup-set-price">
+                            <label>Enter accound id:
+                                <input 
+                                type='hex' 
+                                defaultValue={accountId} 
+                                placeholder={price > 20 ? price / 1000000000000000000: price}
+                                onChange={(e) => setAccountId(e.target.value)}
+                                />
+                                <button onClick={async () => { handleSetPriceClick() }}> Submit </button>
+                            </label>
+                        </div>
+                    
+                    }
+                </div>
+            </div>
+
+        </div>
+             {/* <Card style={popup.isEven && popup.isOwned ? display : display2}>
                 <Card.Header as="h5">Property {id}</Card.Header>
                 <Card.Body>
                     <Card.Title>Welcome to Property {id}!</Card.Title>
@@ -149,7 +196,7 @@ const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1
                             </Form.Group>
                         </Form>}
                 </Card.Body>
-            </Card>
+            </Card> */}
         </>
     )
 }

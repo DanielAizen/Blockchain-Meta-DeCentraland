@@ -1,0 +1,23 @@
+.card-popup-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-popup-wrapper {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    background-color: white;
+    position: absolute;
+    width: 18rem;
+    height: 24rem;
+}
+
+.popup-header {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.popup-price {
+    font-weight: 600;
+    font-size: 20px;
+}
