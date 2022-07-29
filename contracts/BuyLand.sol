@@ -6,15 +6,15 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "./IzenDome.sol";
 
 contract Buyland is IzenDome {
-    address [80] public owners;
-    uint [80] _price;
+    address [800] public owners;
+    uint [800] _price;
     
     event LandBought(address indexedFrom, uint256 landId, address owner);
     event LandTransfer(address from, address to, uint landId);
     event PriceChanged(uint landId, uint256 newPrice);
 
     function buy(uint256 landId, uint256 price) public payable returns (uint256) {
-        require(landId >= 0 && landId <= 79);
+        require(landId >= 0 && landId <= 799);
         require(owners[landId] == 0x0000000000000000000000000000000000000000);
         _price[landId] = price;
         _mint(msg.sender, landId);
@@ -23,7 +23,7 @@ contract Buyland is IzenDome {
         return landId;
     }
     // Retrieving the owners
-    function getOwners() public view returns (address[80] memory) {
+    function getOwners() public view returns (address[800] memory) {
         return owners;
     }
     // Retrieving specific owner

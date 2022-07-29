@@ -3,11 +3,12 @@ import { useBuyLandContract } from "../../hooks/useBuyLand";
 // import { Property } from "../Property/Property";
 import Property from "../Property/Property";
 import { pricesArray } from "../../config";
+import './World.css';
 
 const createMapArray = () => {
     let allMapsArray = []
     let mapArray = []
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 40; i++) {
         for (let j = 0; j < 20; j++) {
             mapArray.push({ id: (i * 20) + j, owner: null, type: "" , price: pricesArray[i*20 + j]})
         }
