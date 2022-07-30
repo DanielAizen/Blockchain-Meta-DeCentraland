@@ -116,7 +116,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -135,7 +136,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -159,7 +161,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -172,7 +175,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -191,7 +195,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -279,7 +284,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -292,7 +298,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -311,7 +318,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -13419,18 +13427,18 @@
         1688
       ],
       "IzenDome": [
-        2482
+        2494
       ],
       "Strings": [
         2235
       ]
     },
-    "id": 2483,
+    "id": 2495,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2470,
+        "id": 2482,
         "literals": [
           "solidity",
           "^",
@@ -13443,10 +13451,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
         "file": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "id": 2471,
+        "id": 2483,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2483,
+        "scope": 2495,
         "sourceUnit": 1555,
         "src": "88:57:14",
         "symbolAliases": [],
@@ -13457,13 +13465,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 2472,
+              "id": 2484,
               "name": "ERC721",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1554,
               "src": "170:6:14"
             },
-            "id": 2473,
+            "id": 2485,
             "nodeType": "InheritanceSpecifier",
             "src": "170:6:14"
           }
@@ -13472,9 +13480,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 2482,
+        "id": 2494,
         "linearizedBaseContracts": [
-          2482,
+          2494,
           1554,
           1715,
           1670,
@@ -13488,12 +13496,12 @@
         "nodes": [
           {
             "body": {
-              "id": 2480,
+              "id": 2492,
               "nodeType": "Block",
               "src": "226:8:14",
               "statements": []
             },
-            "id": 2481,
+            "id": 2493,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -13501,7 +13509,7 @@
                 "arguments": [
                   {
                     "hexValue": "497a656e446f6d65",
-                    "id": 2476,
+                    "id": 2488,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -13517,7 +13525,7 @@
                   },
                   {
                     "hexValue": "495a44",
-                    "id": 2477,
+                    "id": 2489,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -13532,10 +13540,10 @@
                     "value": "IZD"
                   }
                 ],
-                "id": 2478,
+                "id": 2490,
                 "kind": "baseConstructorSpecifier",
                 "modifierName": {
-                  "id": 2475,
+                  "id": 2487,
                   "name": "ERC721",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 1554,
@@ -13549,25 +13557,25 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2474,
+              "id": 2486,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "197:2:14"
             },
             "returnParameters": {
-              "id": 2479,
+              "id": 2491,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "226:0:14"
             },
-            "scope": 2482,
+            "scope": 2494,
             "src": "186:48:14",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 2483,
+        "scope": 2495,
         "src": "149:88:14",
         "usedErrors": []
       }
@@ -13582,12 +13590,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x8B6D7b5a6be2B586260e4602a610549B780Eb1bF",
-      "transactionHash": "0x7265c6e331036a2b77c804bd52b805f935b2ee03e9d3d899b02dd0d511ce5218"
+      "address": "0x4d707993688CC8b6E1c3B2eb4f5b6FCb17D9E100",
+      "transactionHash": "0xca05bb026bf7944f5b063622c4d46ebd9c02ae2329164f012d4f6799f8286f36"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-07-29T13:44:23.944Z",
+  "updatedAt": "2022-07-30T13:14:53.001Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

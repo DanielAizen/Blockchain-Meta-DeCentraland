@@ -42,5 +42,8 @@ contract Buyland is IzenDome {
         _price[landId] = newPrice;
         emit PriceChanged(landId, newPrice);
     }
+    function getPrice(uint256 landId) public view returns (uint256) {
+        return _price[landId];
+    }
 
 }

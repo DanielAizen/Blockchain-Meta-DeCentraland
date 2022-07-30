@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { useBuyLandContract } from "../../hooks/useBuyLand";
-// import { Property } from "../Property/Property";
 import Property from "../Property/Property";
 import { pricesArray } from "../../config";
 import './World.css';

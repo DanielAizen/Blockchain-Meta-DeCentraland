@@ -16,7 +16,7 @@ const popupReducer = (popup, action) => {
         case POPUP_ACTIONS.transferClicked:
             return { ...popup, transfer: !popup.transfer }
         case POPUP_ACTIONS.setNewPriceClicked:
-            return { ...popup, setNewPriceClicked: !popup.isSetNewPriceClicked }
+            return { ...popup, setNewPriceClicked: !popup.setNewPriceClicked }
         default:
             return popup;
     }
@@ -56,7 +56,11 @@ const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1
         console.log(newPrice, id)
         try {
             await contract.methods.setPrice(id, newPrice).send()
-            dispatch({ type: ACTIONS.NewPrice, price: newPrice })
+            const priceFromContract = await contract.methods.getPrice(id).call()
+            setNewPrice(priceFromContract)
+            console.log({priceFromContract});
+            dispatch({ type: 'setNewPrice', newPrice: newPrice })
+
 
         } catch (err) {
             console.log("setPrice rejected");
@@ -137,7 +141,6 @@ const PropertyPopUp = ({ id, hexId, contract, dispatch, account, price, isOwned1
                             placeholder={price > 20 ? price / 1000000000000000000: price}
                             onChange={(e) => setAccountId(e.target.value)}
                             />
-                            <button onClick={async () => { handleSetPriceClick() }}> Submit </button>
                         </label>
                         <label>Set new price:
                             <input 

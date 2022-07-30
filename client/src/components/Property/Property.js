@@ -92,6 +92,10 @@ const Property = (props) => {
             try {
                 if (owners.includes(props.id)) {
                     dispatch( {type: ACTIONS.Bought})
+                    const priceFromContract = await props.contract.methods.getPrice(props.id).call()
+                    console.log({priceFromContract});
+                    dispatch({type: ACTIONS.NewPrice, newPrice: priceFromContract})
+
                 } else {
                     if (roads.includes(props.id)){
                         dispatch({type: ACTIONS.Road})
